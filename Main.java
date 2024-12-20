@@ -1,133 +1,54 @@
-// Patient Class typo
-class Patient {
-    private String name;
-    private int age;
-    private String ailment;
+import java.util.Scanner;
 
-    // Constructor nu
-    public Patient(String name, int age, String ailment) {
-        this.name = name;
-        this.age = age;
-        this.ailment = ailment;
-    }
-
-    // Getters and Setters
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getAilment() {
-        return ailment;
-    }
-
-    public void setAilment(String ailment) {
-        this.ailment = ailment;
-    }
-
-    // Method to display patient details
-    public void displayDetails() {
-        System.out.println("Patient Name: " + name);
-        System.out.println("Age: " + age);
-        System.out.println("Ailment: " + ailment);
-    }
-}
-
-// MedicalProfessional Class
-class MedicalProfessional {
-    private String name;
-    private String specialization;
-
-    // Constructor
-    public MedicalProfessional(String name, String specialization) {
-        this.name = name;
-        this.specialization = specialization;
-    }
-
-    // Getters and Setters
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSpecialization() {
-        return specialization;
-    }
-
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
-    }
-
-    // Method to display professional details
-    public void displayDetails() {
-        System.out.println("Medical Professional Name: " + name);
-        System.out.println("Specialization: " + specialization);
-    }
-}
-
-// Hospital Class
-class Hospital {
-    private String name;
-    private String location;
-
-    // Constructor
-    public Hospital(String name, String location) {
-        this.name = name;
-        this.location = location;
-    }
-
-    // Getters and Setters
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    // Method to display hospital details
-    public void displayDetails() {
-        System.out.println("Hospital Name: " + name);
-        System.out.println("Location: " + location);
-    }
-}
-
-// Main Class
 public class Main {
     public static void main(String[] args) {
-        // Create instances of each class
-        Patient patient1 = new Patient("Toilybekov Assylkhan", 45, "Diabetes");
-        Patient patient2 = new Patient("Aitimbet Baknur", 30, "Flu");
+        Scanner scanner = new Scanner(System.in);
 
-        MedicalProfessional doctor1 = new MedicalProfessional("Dr. Borat", "Cardiologist");
-        MedicalProfessional doctor2 = new MedicalProfessional("Dr. Nursultan", "Pediatrician");
+        // Input for Hospital
+        System.out.println("Enter hospital name: ");
+        String hospitalName = scanner.nextLine();
+        System.out.println("Enter hospital location: ");
+        String hospitalLocation = scanner.nextLine();
+        Hospital hospital = new Hospital(hospitalName, hospitalLocation);
 
-        Hospital hospital = new Hospital("#9 Gorodskaya", "Astana");
+        // Input for Medical Professionals
+        System.out.println("\nEnter details for first medical professional:");
+        System.out.println("Name: ");
+        String doctor1Name = scanner.nextLine();
+        System.out.println("Specialization: ");
+        String doctor1Specialization = scanner.nextLine();
+        MedicalProfessional doctor1 = new MedicalProfessional(doctor1Name, doctor1Specialization);
 
-        // Display details of the instances
-        System.out.println("=== Patient Details ===");
+        System.out.println("\nEnter details for second medical professional:");
+        System.out.println("Name: ");
+        String doctor2Name = scanner.nextLine();
+        System.out.println("Specialization: ");
+        String doctor2Specialization = scanner.nextLine();
+        MedicalProfessional doctor2 = new MedicalProfessional(doctor2Name, doctor2Specialization);
+
+        // Input for Patients
+        System.out.println("\nEnter details for first patient:");
+        System.out.println("Name: ");
+        String patient1Name = scanner.nextLine();
+        System.out.println("Age: ");
+        int patient1Age = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+        System.out.println("Ailment: ");
+        String patient1Ailment = scanner.nextLine();
+        Patient patient1 = new Patient(patient1Name, patient1Age, patient1Ailment);
+
+        System.out.println("\nEnter details for second patient:");
+        System.out.println("Name: ");
+        String patient2Name = scanner.nextLine();
+        System.out.println("Age: ");
+        int patient2Age = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+        System.out.println("Ailment: ");
+        String patient2Ailment = scanner.nextLine();
+        Patient patient2 = new Patient(patient2Name, patient2Age, patient2Ailment);
+
+        // Display details
+        System.out.println("\n=== Patient Details ===");
         patient1.displayDetails();
         System.out.println();
         patient2.displayDetails();
@@ -147,5 +68,7 @@ public class Main {
         } else {
             System.out.println("Patients have different names.");
         }
+
+        scanner.close();
     }
 }
